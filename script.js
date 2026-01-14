@@ -14,27 +14,31 @@ document.getElementById("diagnosisForm").addEventListener("submit", async functi
   }
 
   // --- 質問 → 特徴カテゴリ ---
-  const answerMap = {
-    q1: { A: "acting", B: "space", C: "body", D: "thought" },
-    q2: { A: "acting", B: "space", C: "acting", D: "thought" },
-    q3: { A: "acting", B: "space", C: "body", D: "thought" },
-    q4: { A: "acting", B: "space", C: "body", D: "thought" },
-    q5: { A: "acting", B: "space", C: "body", D: "thought" },
-    q6: { A: "acting", B: "space", C: "body", D: "thought" },
-    q7: { A: "acting", B: "space", C: "body", D: "thought" },
-    q8: { A: "acting", B: "space", C: "body", D: "thought" },
-    q9: { A: "acting", B: "space", C: "body", D: "thought" },
-    q10: { A: "acting", B: "space", C: "body", D: "thought" }
-  };
+const answerMap = {
+  q1: { A: "age", B: "age", C: "age", D: "age" },
+  q2: { A: "hair", B: "hair", C: "hair", D: "hair" },
+  q3: { A: "height", B: "height", C: "height", D: "height" },
+  q4: { A: "bast", B: "bast", C: "bast", D: "bast" },
+  q5: { A: "underhair", B: "underhair", C: "underhair", D: "underhair" },
+  q6: { A: "eye", B: "eye", C: "eye", D: "eye" },
+  q7: { A: "body", B: "body", C: "body", D: "body" },
+  q8: { A: "aura", B: "aura", C: "aura", D: "aura" },
+  q9: { A: "voice", B: "voice", C: "voice", D: "voice" },
+  q10: { A: "last", B: "last", C: "last", D: "last" }
+};
 
   // --- ユーザー特徴ベクトル ---
-  const userTraits = { acting: 0, space: 0, body: 0, thought: 0 };
+  const userTraits = {
+     age: 0, hair: 0, height: 0, bast: 0, underhair: 0, eye: 0, body: 0, aura: 0 , voice: 0, last: 0
+    };
 
-  answers.forEach((val, i) => {
-    const qKey = `q${i + 1}`;
-    const trait = answerMap[qKey][val];
-    userTraits[trait]++;
-  });
+const scoreMap = { A: 4, B: 3, C: 2, D: 1 };
+
+answers.forEach((val, i) => {
+  const qKey = `q${i + 1}`;
+  const trait = answerMap[qKey][val];
+  userTraits[trait] = scoreMap[val];
+});
 
   // --- JSONデータベース読み込み ---
   const characters = await fetch("characters.json").then(res => res.json());
