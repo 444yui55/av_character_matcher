@@ -1,0 +1,28 @@
+[
+  {
+    "id": "char01",
+    "name": "キャラA",
+    "type": "演技タイプ",
+    "traits": {
+      "acting": 5,
+      "space": 2,
+      "body": 1,
+      "thought": 3
+    },
+    "image": "images/char01.png",
+    "link": "https://example.com/char01"
+  },
+  {
+    "id": "char02",
+    "name": "キャラB",
+    "type": "空間支配タイプ",
+    "traits": {
+      "acting": 2,
+      "space": 5,
+      "body": 2,
+      "thought": 1
+    },
+    "image": "images/char02.png",
+    "link": "https://example.com/char02"
+  }
+]
